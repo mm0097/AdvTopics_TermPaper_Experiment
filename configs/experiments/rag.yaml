@@ -1,0 +1,64 @@
+# RAG experiment configuration (With Retrieval)
+
+defaults:
+  - /base
+
+experiment:
+  name: "rag"
+  description: "MAS orchestrator with retrieval augmentation"
+
+# Model configuration - using GPT-5 as primary
+model:
+  provider: "openai"
+  name: "gpt-5-mini"
+  max_tokens: 4096
+  # No temperature for GPT-5 models
+  # Note: reasoning_effort and verbosity not yet supported by OpenAI client
+  # reasoning_effort: "medium"
+  # verbosity: "medium"
+
+# Agent configuration
+agents:
+  max_agents: 10
+  max_steps: 100
+  timeout_seconds: 300
+
+# Tools configuration
+tools:
+  code_interpreter:
+    enabled: true
+    timeout: 60
+    description: |
+      Python code execution environment for:
+      - Mathematical calculations and analysis
+      - Logical reasoning and problem-solving
+      - Data processing and visualization  
+      - Algorithm implementation and testing
+      Use this tool for any computational tasks or when logical reasoning would benefit from code execution.
+  disable_builtin_tools: true
+
+# RAG enabled for retrieval experiments
+retrieval:
+  enabled: true
+  policy: "planning-only"  # Retrieve during planning phase
+  top_k: 5
+  max_retrievals_per_turn: 2
+  rerank: false
+  
+  # Knowledge sources
+  sources:
+    pm_knowledge:
+      enabled: true
+      namespace: "pm"
+      description: "Project management and process knowledge"
+    domain_knowledge:
+      enabled: true
+      namespace: "auto"  # Auto-detect domain from task
+      description: "Domain-specific knowledge for specialized tasks"
+
+# Enhanced logging for RAG experiments
+telemetry:
+  enabled: true
+  log_level: "INFO"
+  structured_logs: true
+  trace_retrieval: true

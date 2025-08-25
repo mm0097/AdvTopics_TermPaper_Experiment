@@ -1,0 +1,13 @@
+# Minimal requirements - only essential packages not likely to conflict
+langgraph
+jupyter-client
+ipykernel
+python-dotenv
+PyYAML
+rich
+
+# Note: You likely already have these from existing packages:
+# - langchain, langchain-core, langchain-openai, langchain-anthropic
+# - openai, anthropic
+# - numpy, pandas, matplotlib
+# - pydantic

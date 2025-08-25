@@ -1,0 +1,35 @@
+# Groq model configurations
+
+defaults:
+  - /base
+
+model:
+  provider: "groq"
+  name: "llama-3.3-70b-versatile"
+  temperature: 0.2
+  max_tokens: 4096
+
+# Model variants
+llama3_3_70b:
+  model:
+    name: "llama-3.3-70b-versatile"
+    max_tokens: 4096
+    temperature: 0.2
+
+llama3_1_8b:
+  model:
+    name: "llama-3.1-8b-instant"
+    max_tokens: 4096
+    temperature: 0.2
+
+mixtral:
+  model:
+    name: "mixtral-8x7b-32768"
+    max_tokens: 8192
+    temperature: 0.2
+
+gemma2_9b:
+  model:
+    name: "gemma2-9b-it"
+    max_tokens: 4096
+    temperature: 0.2

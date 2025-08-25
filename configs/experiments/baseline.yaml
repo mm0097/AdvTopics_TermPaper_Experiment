@@ -1,0 +1,48 @@
+# Baseline experiment configuration (No RAG)
+
+defaults:
+  - /base
+
+experiment:
+  name: "baseline"
+  description: "MAS orchestrator without retrieval augmentation"
+
+# Model configuration - using GPT-5 as primary
+model:
+  provider: "openai"
+  name: "gpt-5-mini"
+  max_tokens: 4096
+  # No temperature for GPT-5 models
+  # Note: reasoning_effort and verbosity not yet supported by OpenAI client
+  # reasoning_effort: "medium"
+  # verbosity: "medium"
+
+# Agent configuration
+agents:
+  max_agents: 10
+  max_steps: 100
+  timeout_seconds: 300
+
+# Tools configuration
+tools:
+  code_interpreter:
+    enabled: true
+    timeout: 300
+    description: |
+      Python code execution environment for:
+      - Mathematical calculations and analysis
+      - Logical reasoning and problem-solving
+      - Data processing and visualization  
+      - Algorithm implementation and testing
+      Use this tool for any computational tasks or when logical reasoning would benefit from code execution.
+  disable_builtin_tools: true
+
+# RAG disabled for baseline
+retrieval:
+  enabled: false
+
+# Logging configuration
+telemetry:
+  enabled: true
+  log_level: "INFO"
+  structured_logs: true

@@ -1,0 +1,30 @@
+# Anthropic model configurations
+
+defaults:
+  - /base
+
+model:
+  provider: "anthropic"
+  name: "claude-sonnet-4-0"
+  temperature: 0.2
+  max_tokens: 4096
+  top_p: 0.9
+
+# Model variants
+claude3_5_sonnet:
+  model:
+    name: "claude-3-5-sonnet-20241022"
+    max_tokens: 4096
+    temperature: 0.2
+
+claude3_5_haiku:
+  model:
+    name: "claude-3-5-haiku-20241022"
+    max_tokens: 4096
+    temperature: 0.2
+
+claude3_opus:
+  model:
+    name: "claude-3-opus-20240229"
+    max_tokens: 4096
+    temperature: 0.2

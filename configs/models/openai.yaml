@@ -1,0 +1,44 @@
+# OpenAI model configurations
+
+defaults:
+  - /base
+
+model:
+  provider: "openai"
+  name: "gpt-5-nano"
+  # GPT-5 specific: No temperature parameter supported
+  # Uses default reasoning_effort and verbosity
+  max_tokens: 4096
+  timeout: 120
+
+# Model variants
+gpt5_mini:
+  model:
+    name: "gpt-5-mini"
+    max_tokens: 4096
+    # Note: reasoning_effort and verbosity not yet supported by OpenAI client
+    # reasoning_effort: "medium"  # minimal, medium, high
+    # verbosity: "medium"  # low, medium, high
+
+gpt5:
+  model:
+    name: "gpt-5"
+    max_tokens: 4096
+    # Note: reasoning_effort and verbosity not yet supported by OpenAI client
+    # reasoning_effort: "medium"
+    # verbosity: "medium"
+
+# Fallback models (support temperature)
+gpt4o:
+  model:
+    name: "gpt-4o"
+    max_tokens: 4096
+    temperature: 0.2
+    top_p: 0.9
+
+gpt4o_mini:
+  model:
+    name: "gpt-4o-mini"
+    max_tokens: 4096
+    temperature: 0.2
+    top_p: 0.9
